@@ -1,0 +1,14 @@
+﻿node_modules/
+web/node_modules/
+web/dist/
+web/build/
+.env
+.env.local
+.DS_Store
+.vscode/
+.idea/
+*.log
+
+# Sensitive source data - regenerate locally via src/pipeline.py
+*.xlsx
+data/*.json

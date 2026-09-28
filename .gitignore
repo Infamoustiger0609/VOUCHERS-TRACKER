@@ -11,4 +11,4 @@ web/build/
 
 # Sensitive source data - regenerate locally via src/pipeline.py
 *.xlsx
-data/*.json
+

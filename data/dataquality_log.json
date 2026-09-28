@@ -1,0 +1,298 @@
+[
+  {
+    "stage": "step1",
+    "reason": "blank_scheme_code",
+    "sheet": "2024-2025",
+    "sr_no": 292.0,
+    "vendor": "Club JB ",
+    "scheme_name": "Club JB Aug'24"
+  },
+  {
+    "stage": "step1",
+    "reason": "blank_scheme_code",
+    "sheet": "2024-2025",
+    "sr_no": 318.0,
+    "vendor": "Accentiv’ (India) Pvt. Ltd. ",
+    "scheme_name": "Accentiv’ (India) Pvt. Ltd- 03_09_24"
+  },
+  {
+    "stage": "step1",
+    "reason": "blank_scheme_code",
+    "sheet": "2024-2025",
+    "sr_no": 319.0,
+    "vendor": "Accentiv’ (India) Pvt. Ltd. ",
+    "scheme_name": "Accentiv’ (India) Pvt. Ltd- 03_09_24"
+  },
+  {
+    "stage": "step1",
+    "reason": "blank_scheme_code",
+    "sheet": "2024-2025",
+    "sr_no": 320.0,
+    "vendor": "PVR Corporate Sales Team (Internal)",
+    "scheme_name": "VG@PVRINOX"
+  },
+  {
+    "stage": "step1",
+    "reason": "blank_scheme_code",
+    "sheet": "2024-2025",
+    "sr_no": 715.0,
+    "vendor": "Accentiv’ (India) Pvt. Ltd. ",
+    "scheme_name": "Accentiv’ (India) Pvt. Ltd|INR 200|25.02.25"
+  },
+  {
+    "stage": "step1",
+    "reason": "blank_scheme_code",
+    "sheet": "2025-2026",
+    "sr_no": 461.0,
+    "vendor": "AU Bank| Buy 2 Get 1 Ticket|Sept'25",
+    "scheme_name": "AU Bank| Buy 2 Get 1 Ticket|Sept'25"
+  },
+  {
+    "stage": "step1",
+    "reason": "blank_scheme_code",
+    "sheet": "2025-2026",
+    "sr_no": 462.0,
+    "vendor": "AU Bank| Rs.200 off on F&B|Sept'25",
+    "scheme_name": "AU Bank| Rs.200 off on F&B|Sept'25"
+  },
+  {
+    "stage": "step1",
+    "reason": "blank_scheme_code",
+    "sheet": "2025-2026",
+    "sr_no": 567.0,
+    "vendor": "Testing Code| Passport | Nov'25",
+    "scheme_name": "Testing Code| Passport | Nov'25"
+  },
+  {
+    "stage": "step1",
+    "reason": "blank_scheme_code",
+    "sheet": "2025-2026",
+    "sr_no": 909.0,
+    "vendor": "Club JB ",
+    "scheme_name": "Club JB |Ticket Code|Feb'26 | Cap INR 500"
+  },
+  {
+    "stage": "step1",
+    "reason": "blank_scheme_code",
+    "sheet": "2026-2027",
+    "sr_no": 482.0,
+    "vendor": "Club JB ",
+    "scheme_name": "Club JB |F&B Code| Salted Popcorn 50g + Pepsi 300ml |Sept'26"
+  },
+  {
+    "stage": "step1",
+    "reason": "blank_scheme_code",
+    "sheet": "2026-2027",
+    "sr_no": 486.0,
+    "vendor": "GYFTR Testing Code- Security|Sept'26",
+    "scheme_name": "GYFTR Testing Code|Security|Sept'26"
+  },
+  {
+    "stage": "step1",
+    "reason": "blank_scheme_code",
+    "sheet": "2026-2027",
+    "sr_no": 487.0,
+    "vendor": "GYFTR Testing Code- Wallet|Sept'26",
+    "scheme_name": "GYFTR Testing Code| Wallet Topup|Sept'26"
+  },
+  {
+    "stage": "step1",
+    "reason": "blank_scheme_code",
+    "sheet": "2026-2027",
+    "sr_no": 488.0,
+    "vendor": "GYFTR Testing Code|Sept'26",
+    "scheme_name": "GYFTR Testing Code|INR 20|Sept'26"
+  },
+  {
+    "stage": "step1",
+    "reason": "blank_scheme_code",
+    "sheet": "2026-2027",
+    "sr_no": 489.0,
+    "vendor": "GYFTR Testing Code|Sept'26",
+    "scheme_name": "GYFTR Testing Code|INR 30|Sept'26"
+  },
+  {
+    "stage": "step1",
+    "reason": "blank_scheme_code",
+    "sheet": "2026-2027",
+    "sr_no": 490.0,
+    "vendor": "GYFTR Testing Code|Sept'26",
+    "scheme_name": "GYFTR Testing Code|INR 50|Sept'26"
+  },
+  {
+    "stage": "step1",
+    "reason": "blank_scheme_code",
+    "sheet": "2026-2027",
+    "sr_no": 494.0,
+    "vendor": "Club JB ",
+    "scheme_name": "Club JB |F&B Code| Salted Popcorn 50g + Pepsi 300ml |Sept'26"
+  },
+  {
+    "stage": "step1",
+    "reason": "unparseable_scheme_code",
+    "sheet": "2024-2025",
+    "sr_no": 287.0,
+    "vendor": "Corpkonnex",
+    "scheme_name": "Corpkonnex Aug'24",
+    "scheme_code_raw": "13170 & 13171"
+  },
+  {
+    "stage": "step1",
+    "reason": "test_code",
+    "sheet": "2025-2026",
+    "sr_no": 597.0,
+    "scheme_code": 14352,
+    "vendor": "Seniors Day | Testing Codes | GEN S | Nov'25",
+    "scheme_name": "Seniors Day | Testing Codes | GEN S | Nov'25"
+  },
+  {
+    "stage": "step1",
+    "reason": "same code, distinct offers",
+    "sheet": "2026-2027",
+    "sr_no": 193.0,
+    "scheme_code": 15046,
+    "vendor": "Bansal Group |Value Code|June'26",
+    "scheme_name": "Bansal Group |Value Code- INR 150|June'26",
+    "detail": "Scheme Code appears more than once in the E-Codes source, but the rows are distinct sub-offers (differ in Offer/Scheme Name/E-Code Value/Total/qty), not duplicates - both kept. If this scheme is bucketed as KOTAK/OFFERS, its redemption figures are looked up from a single Voucher Summary row and will be duplicated across every E-Codes row sharing this code.",
+    "voucher_summary_redeemed_qty": 150,
+    "voucher_summary_redemption_amount": 22256.0,
+    "allocated_share": null,
+    "split_applied": false,
+    "split_note": "Not split - NEFT bucket recognizes revenue from E-Codes' own Total column, not Voucher Summary redemption, so this row is unaffected by the duplicate-code double-count."
+  },
+  {
+    "stage": "step1",
+    "reason": "same code, distinct offers",
+    "sheet": "2026-2027",
+    "sr_no": 195.0,
+    "scheme_code": 15046,
+    "vendor": "Bansal Group |Value Code|June'26",
+    "scheme_name": "Bansal Group |Value Code- INR 150|June'26",
+    "detail": "Scheme Code appears more than once in the E-Codes source, but the rows are distinct sub-offers (differ in Offer/Scheme Name/E-Code Value/Total/qty), not duplicates - both kept. If this scheme is bucketed as KOTAK/OFFERS, its redemption figures are looked up from a single Voucher Summary row and will be duplicated across every E-Codes row sharing this code.",
+    "voucher_summary_redeemed_qty": 150,
+    "voucher_summary_redemption_amount": 22256.0,
+    "allocated_share": null,
+    "split_applied": false,
+    "split_note": "Not split - NEFT bucket recognizes revenue from E-Codes' own Total column, not Voucher Summary redemption, so this row is unaffected by the duplicate-code double-count."
+  },
+  {
+    "stage": "step1",
+    "reason": "same code, distinct offers",
+    "sheet": "2024-2025",
+    "sr_no": 279.0,
+    "scheme_code": 13159,
+    "vendor": "Accentiv’ (India) Pvt. Ltd. ",
+    "scheme_name": "Accentiv’ (India) Pvt. Ltd- 20_08_24",
+    "detail": "Scheme Code appears more than once in the E-Codes source, but the rows are distinct sub-offers (differ in Offer/Scheme Name/E-Code Value/Total/qty), not duplicates - both kept. If this scheme is bucketed as KOTAK/OFFERS, its redemption figures are looked up from a single Voucher Summary row and will be duplicated across every E-Codes row sharing this code.",
+    "voucher_summary_redeemed_qty": 30,
+    "voucher_summary_redemption_amount": 28415.0,
+    "allocated_share": null,
+    "split_applied": false,
+    "split_note": "Not split - NEFT bucket recognizes revenue from E-Codes' own Total column, not Voucher Summary redemption, so this row is unaffected by the duplicate-code double-count."
+  },
+  {
+    "stage": "step1",
+    "reason": "same code, distinct offers",
+    "sheet": "2024-2025",
+    "sr_no": 323.0,
+    "scheme_code": 13159,
+    "vendor": "Accentiv’ (India) Pvt. Ltd. ",
+    "scheme_name": "Accentiv’ (India) Pvt. Ltd- 05_09_24",
+    "detail": "Scheme Code appears more than once in the E-Codes source, but the rows are distinct sub-offers (differ in Offer/Scheme Name/E-Code Value/Total/qty), not duplicates - both kept. If this scheme is bucketed as KOTAK/OFFERS, its redemption figures are looked up from a single Voucher Summary row and will be duplicated across every E-Codes row sharing this code.",
+    "voucher_summary_redeemed_qty": 30,
+    "voucher_summary_redemption_amount": 28415.0,
+    "allocated_share": null,
+    "split_applied": false,
+    "split_note": "Not split - NEFT bucket recognizes revenue from E-Codes' own Total column, not Voucher Summary redemption, so this row is unaffected by the duplicate-code double-count."
+  },
+  {
+    "stage": "step1",
+    "reason": "same code, distinct offers",
+    "sheet": "2026-2027",
+    "sr_no": 137.0,
+    "scheme_code": 14984,
+    "vendor": "Kotak/Customer Incentive offer-400/ May26",
+    "scheme_name": "Code- POID9L |Kotak F&B offer INR400/ May'26",
+    "detail": "Scheme Code appears more than once in the E-Codes source, but the rows are distinct sub-offers (differ in Offer/Scheme Name/E-Code Value/Total/qty), not duplicates - both kept. If this scheme is bucketed as KOTAK/OFFERS, its redemption figures are looked up from a single Voucher Summary row and will be duplicated across every E-Codes row sharing this code.",
+    "voucher_summary_redeemed_qty": 0,
+    "voucher_summary_redemption_amount": 0.0,
+    "allocated_share": null,
+    "split_applied": false,
+    "split_note": "Not split - no Voucher Summary match for this scheme code."
+  },
+  {
+    "stage": "step1",
+    "reason": "same code, distinct offers",
+    "sheet": "2026-2027",
+    "sr_no": 151.0,
+    "scheme_code": 14984,
+    "vendor": "Kotak/Customer Incentive offer-400/ May26",
+    "scheme_name": "Code- PLS6KE |Kotak F&B offer INR400/ May'26",
+    "detail": "Scheme Code appears more than once in the E-Codes source, but the rows are distinct sub-offers (differ in Offer/Scheme Name/E-Code Value/Total/qty), not duplicates - both kept. If this scheme is bucketed as KOTAK/OFFERS, its redemption figures are looked up from a single Voucher Summary row and will be duplicated across every E-Codes row sharing this code.",
+    "voucher_summary_redeemed_qty": 0,
+    "voucher_summary_redemption_amount": 0.0,
+    "allocated_share": null,
+    "split_applied": false,
+    "split_note": "Not split - no Voucher Summary match for this scheme code."
+  },
+  {
+    "stage": "step1",
+    "reason": "same code, distinct offers",
+    "sheet": "2026-2027",
+    "sr_no": 136.0,
+    "scheme_code": 14985,
+    "vendor": "Kotak/Customer Incentive offer-250/ May'26",
+    "scheme_name": "Code- LKJ3HI |Kotak F&B offer INR250/May'26",
+    "detail": "Scheme Code appears more than once in the E-Codes source, but the rows are distinct sub-offers (differ in Offer/Scheme Name/E-Code Value/Total/qty), not duplicates - both kept. If this scheme is bucketed as KOTAK/OFFERS, its redemption figures are looked up from a single Voucher Summary row and will be duplicated across every E-Codes row sharing this code.",
+    "voucher_summary_redeemed_qty": 0,
+    "voucher_summary_redemption_amount": 0.0,
+    "allocated_share": null,
+    "split_applied": false,
+    "split_note": "Not split - no Voucher Summary match for this scheme code."
+  },
+  {
+    "stage": "step1",
+    "reason": "same code, distinct offers",
+    "sheet": "2026-2027",
+    "sr_no": 150.0,
+    "scheme_code": 14985,
+    "vendor": "Kotak/Customer Incentive offer-250/ May'26",
+    "scheme_name": "Code- GFJ3KJ |Kotak F&B offer INR250/May'26",
+    "detail": "Scheme Code appears more than once in the E-Codes source, but the rows are distinct sub-offers (differ in Offer/Scheme Name/E-Code Value/Total/qty), not duplicates - both kept. If this scheme is bucketed as KOTAK/OFFERS, its redemption figures are looked up from a single Voucher Summary row and will be duplicated across every E-Codes row sharing this code.",
+    "voucher_summary_redeemed_qty": 0,
+    "voucher_summary_redemption_amount": 0.0,
+    "allocated_share": null,
+    "split_applied": false,
+    "split_note": "Not split - no Voucher Summary match for this scheme code."
+  },
+  {
+    "stage": "step1",
+    "reason": "same code, distinct offers",
+    "sheet": "2024-2025",
+    "sr_no": 685.0,
+    "scheme_code": 13612,
+    "vendor": "Accentiv’ (India) Pvt. Ltd. ",
+    "scheme_name": "Accentiv’ (India) Pvt. Ltd|INR 200|17.02.25",
+    "detail": "Scheme Code appears more than once in the E-Codes source, but the rows are distinct sub-offers (differ in Offer/Scheme Name/E-Code Value/Total/qty), not duplicates - both kept. If this scheme is bucketed as KOTAK/OFFERS, its redemption figures are looked up from a single Voucher Summary row and will be duplicated across every E-Codes row sharing this code.",
+    "voucher_summary_redeemed_qty": 0,
+    "voucher_summary_redemption_amount": 0.0,
+    "allocated_share": null,
+    "split_applied": false,
+    "split_note": "Not split - NEFT bucket recognizes revenue from E-Codes' own Total column, not Voucher Summary redemption, so this row is unaffected by the duplicate-code double-count."
+  },
+  {
+    "stage": "step1",
+    "reason": "same code, distinct offers",
+    "sheet": "2024-2025",
+    "sr_no": 686.0,
+    "scheme_code": 13612,
+    "vendor": "Accentiv’ (India) Pvt. Ltd. ",
+    "scheme_name": "Accentiv’ (India) Pvt. Ltd|INR 300|17.02.25",
+    "detail": "Scheme Code appears more than once in the E-Codes source, but the rows are distinct sub-offers (differ in Offer/Scheme Name/E-Code Value/Total/qty), not duplicates - both kept. If this scheme is bucketed as KOTAK/OFFERS, its redemption figures are looked up from a single Voucher Summary row and will be duplicated across every E-Codes row sharing this code.",
+    "voucher_summary_redeemed_qty": 0,
+    "voucher_summary_redemption_amount": 0.0,
+    "allocated_share": null,
+    "split_applied": false,
+    "split_note": "Not split - NEFT bucket recognizes revenue from E-Codes' own Total column, not Voucher Summary redemption, so this row is unaffected by the duplicate-code double-count."
+  }
+]

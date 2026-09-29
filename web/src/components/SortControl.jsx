@@ -4,6 +4,7 @@ const FIELDS = [
   { key: 'REVENUE', label: 'Revenue' },
   { key: 'DATE', label: 'Date (Validity From)' },
   { key: 'PCT', label: 'Redemption Rate' },
+  { key: 'CATEGORY', label: 'Category' },
 ]
 
 function ArrowIcon({ dir }) {

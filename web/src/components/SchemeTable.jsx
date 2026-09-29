@@ -238,7 +238,9 @@ function groupByVendor(schemes, amountField) {
 
 /** Builds a comparator over either scheme rows or vendor groups - both
  * expose a revenue amount, a "date" (validity_from), and a redemption
- * rate, just under different field names. */
+ * rate, just under different field names. Category is per-scheme only -
+ * a vendor can span multiple categories, so vendor groups sort as equal
+ * on this field (falls back to the existing order between them). */
 function makeComparator(field, dir, { amountField, isVendor }) {
   const sign = dir === 'asc' ? 1 : -1
   return (a, b) => {
@@ -249,6 +251,12 @@ function makeComparator(field, dir, { amountField, isVendor }) {
     } else if (field === 'DATE') {
       av = (isVendor ? a.maxValidityFrom : a.validity_from) || ''
       bv = (isVendor ? b.maxValidityFrom : b.validity_from) || ''
+    } else if (field === 'CATEGORY') {
+      // Alphabetical already gives the requested order: F&B, Ticket,
+      // Ticket & F&B - "Ticket" sorts before "Ticket & F&B" because it's
+      // a prefix of it.
+      av = isVendor ? '' : a.category || ''
+      bv = isVendor ? '' : b.category || ''
     } else {
       // PCT - redemption rate
       av = isVendor ? (a.created > 0 ? a.redeemed / a.created : 0) : a.pct_redeemed || 0

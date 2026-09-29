@@ -1,10 +1,10 @@
 import RedemptionCard from './RedemptionCard'
 
 const CARDS = [
-  { key: 'NEFT', label: 'Corporate Sales', dotColor: '#5CC8FC' },
-  { key: 'KOTAK', label: 'Kotak', dotColor: '#F2B84B' },
-  { key: 'OFFERS', label: 'Offers', dotColor: '#7C5CFC' },
-  { key: 'OVERALL', label: 'Overall', dotColor: '#34D399' },
+  { key: 'NEFT', label: 'Corporate Sales', dotColor: 'var(--kpi-corporate-sales)' },
+  { key: 'KOTAK', label: 'Kotak', dotColor: 'var(--kpi-kotak)' },
+  { key: 'OFFERS', label: 'Offers', dotColor: 'var(--kpi-offers)' },
+  { key: 'OVERALL', label: 'Overall', dotColor: 'var(--kpi-overall)' },
 ]
 
 export default function SecondaryStrip({ stats }) {

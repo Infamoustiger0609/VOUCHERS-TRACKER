@@ -14,7 +14,7 @@ import { FilterProvider } from './lib/FilterContext'
 export default function App() {
   return (
     <FilterProvider>
-      <div style={{ width: '100%', height: '100dvh', background: '#0D0F12', display: 'flex', color: '#ECEBF2', overflow: 'hidden' }}>
+      <div style={{ width: '100%', height: '100dvh', background: 'var(--bg-primary)', display: 'flex', color: 'var(--text-primary)', overflow: 'hidden' }}>
         <Sidebar />
         <Routes>
           <Route path="/" element={<Overview />} />

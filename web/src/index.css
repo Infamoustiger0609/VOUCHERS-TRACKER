@@ -1,35 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import 'tailwindcss';
 
-@theme {
-  --color-bg: #0d0f12;
-  --color-surface: #15171c;
-  --color-sidebar: #131519;
-  --color-border: #22242b;
-  --color-border-strong: #2a2d35;
-  --color-chip: #1b1d23;
+/* Premium executive light theme - single source of truth for every color/
+   font used across the dashboard. Components reference these via var(--x)
+   in their inline styles rather than hardcoding hex, so the whole app
+   re-themes from this one block. */
+:root {
+  --bg-primary: #f7f4ee;
+  --bg-secondary: #fbf8f3;
+  --bg-card: #ffffff;
 
-  --color-text-primary: #ecebf2;
-  --color-text-secondary: #8c8f9c;
-  --color-text-muted: #6b6e7a;
-  --color-text-faint: #5a5d68;
+  --sidebar-bg: #f2ece3;
+  --sidebar-active: #6f4e37;
+  --sidebar-hover: #e8ddd0;
+  --sidebar-icon: #8a7768;
+  --sidebar-icon-active: #ffffff;
 
-  --color-neft: #5cc8fc;
-  --color-neft-soft: #7fd4ff;
-  --color-kotak: #f2b84b;
-  --color-offers: #7c5cfc;
-  --color-offers-soft: #b7a6ff;
-  --color-positive: #34d399;
+  --text-primary: #2b1e16;
+  --text-secondary: #6b5b50;
+  --text-muted: #9b8b80;
+  --text-faint: #b5a99c;
 
-  --font-display: 'Fraunces', serif;
-  --font-ui: 'Space Grotesk', system-ui, sans-serif;
+  --border-light: #e8e0d7;
+  --border-medium: #ddd2c5;
+
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+
+  /* KPI identity colors - reused everywhere a bucket/aggregate is
+     color-coded (KPI card dots, sidebar dots, table accents). */
+  --kpi-corporate-sales: #4a90e2;
+  --kpi-kotak: #f5b942;
+  --kpi-offers: #8b5cf6;
+  --kpi-overall: #22c55e;
+
+  /* Generic interactive accent (checkboxes, active menu rows) - distinct
+     from the KPI colors, which are reserved for bucket identity. */
+  --accent: var(--sidebar-active);
+  --accent-soft: rgba(111, 78, 55, 0.12);
+
+  --filter-bg: #fdfbf7;
+  --filter-active-bg: #d6b98a;
+  --filter-active-text: #4b2f1a;
+
+  --flow-line: #cbb9a4;
+  --total-card-bg: #fffdf9;
+  --total-card-border: #ddd2c5;
+
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.03);
+  --card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  --font-display: 'Inter', sans-serif;
+  --font-ui: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
 body {
   margin: 0;
-  background: var(--color-bg);
-  color: var(--color-text-primary);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-family: var(--font-ui);
 }
 
@@ -50,13 +80,39 @@ button {
   font-family: var(--font-display);
 }
 
+/* Shared "premium card" treatment - background/border/shadow/hover-lift
+   for every KPI-style card. Colors that vary per instance (KPI dot, border
+   override) stay inline; this class only carries the parts common to all
+   cards so the recipe lives in exactly one place. */
+.eh-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+.eh-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* Sidebar nav row hover - default/hover background lives here in CSS so it
+   can win over the (unset) inline background on inactive rows; the active
+   row's inline background still takes precedence while active. */
+.eh-nav-item {
+  background: transparent;
+}
+.eh-nav-item:hover {
+  background: var(--sidebar-hover);
+}
+
 /* thin scrollbar for any overflow area that legitimately needs one */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border-strong);
+  background: var(--border-medium);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-track {

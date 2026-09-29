@@ -58,7 +58,7 @@ export default function SortControl({ field, dir, onChange, amountLabel }) {
           gap: 6,
           background: 'transparent',
           border: 'none',
-          color: '#6B6E7A',
+          color: 'var(--text-muted)',
           fontSize: 11.5,
           padding: 0,
         }}
@@ -75,12 +75,12 @@ export default function SortControl({ field, dir, onChange, amountLabel }) {
             top: 'calc(100% + 6px)',
             right: 0,
             minWidth: 200,
-            background: '#1B1D23',
-            border: '1px solid #2A2D35',
+            background: 'var(--bg-card)',
+            border: '1px solid var(--border-medium)',
             borderRadius: 12,
             padding: 6,
             zIndex: 30,
-            boxShadow: '0 12px 28px rgba(0,0,0,0.5)',
+            boxShadow: '0 12px 28px rgba(0,0,0,0.12)',
           }}
         >
           {FIELDS.map((f) => {
@@ -99,8 +99,8 @@ export default function SortControl({ field, dir, onChange, amountLabel }) {
                   padding: '9px 12px',
                   borderRadius: 8,
                   fontSize: 12.5,
-                  color: active ? '#B7A6FF' : '#ECEBF2',
-                  background: active ? 'rgba(124,92,252,0.14)' : 'transparent',
+                  color: active ? 'var(--accent)' : 'var(--text-primary)',
+                  background: active ? 'var(--accent-soft)' : 'transparent',
                   cursor: 'pointer',
                 }}
               >

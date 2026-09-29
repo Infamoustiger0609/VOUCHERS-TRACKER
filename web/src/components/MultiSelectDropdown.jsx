@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 
 function ChevronDown() {
   return (
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#6B6E7A" strokeWidth="2.5" strokeLinecap="round">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="2.5" strokeLinecap="round">
       <path d="M6 9l6 6 6-6" />
     </svg>
   )
@@ -15,8 +15,8 @@ function Check({ checked }) {
         width: 16,
         height: 16,
         borderRadius: 4,
-        border: `1px solid ${checked ? '#7C5CFC' : '#3A3D46'}`,
-        background: checked ? '#7C5CFC' : 'transparent',
+        border: `1px solid ${checked ? 'var(--accent)' : 'var(--border-medium)'}`,
+        background: checked ? 'var(--accent)' : 'transparent',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -24,7 +24,7 @@ function Check({ checked }) {
       }}
     >
       {checked && (
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#0D0F12" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
           <path d="M5 12l5 5L19 8" />
         </svg>
       )}
@@ -81,9 +81,9 @@ export default function MultiSelectDropdown({ label, options, selected, onChange
           gap: 6,
           padding: '7px 12px',
           borderRadius: 8,
-          background: '#1B1D23',
-          border: '1px solid #2A2D35',
-          color: '#ECEBF2',
+          background: 'var(--bg-card)',
+          border: '1px solid var(--border-medium)',
+          color: 'var(--text-primary)',
           fontSize: 12.5,
         }}
       >
@@ -101,12 +101,12 @@ export default function MultiSelectDropdown({ label, options, selected, onChange
             minWidth: 200,
             maxHeight: 320,
             overflowY: 'auto',
-            background: '#1B1D23',
-            border: '1px solid #2A2D35',
+            background: 'var(--bg-card)',
+            border: '1px solid var(--border-medium)',
             borderRadius: 12,
             padding: 8,
             zIndex: 30,
-            boxShadow: '0 12px 28px rgba(0,0,0,0.5)',
+            boxShadow: '0 12px 28px rgba(0,0,0,0.12)',
           }}
         >
           <div
@@ -120,7 +120,7 @@ export default function MultiSelectDropdown({ label, options, selected, onChange
               padding: '10px 12px',
               borderRadius: 8,
               fontSize: 13,
-              color: '#ECEBF2',
+              color: 'var(--text-primary)',
               cursor: 'pointer',
             }}
           >
@@ -128,7 +128,7 @@ export default function MultiSelectDropdown({ label, options, selected, onChange
             <span style={{ flexGrow: 1 }}>All</span>
           </div>
 
-          <div style={{ height: 1, background: '#2A2D35', margin: '4px 4px' }} />
+          <div style={{ height: 1, background: 'var(--border-light)', margin: '4px 4px' }} />
 
           {options.map((opt) => {
             const checked = allSelected || selected.includes(opt.value)
@@ -145,7 +145,7 @@ export default function MultiSelectDropdown({ label, options, selected, onChange
                   padding: '10px 12px',
                   borderRadius: 8,
                   fontSize: 13,
-                  color: '#ECEBF2',
+                  color: 'var(--text-primary)',
                   cursor: 'pointer',
                 }}
               >

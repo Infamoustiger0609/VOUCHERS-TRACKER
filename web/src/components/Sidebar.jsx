@@ -29,16 +29,6 @@ function ChevronIcon({ collapsed }) {
   )
 }
 
-function OverviewIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7A6FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="12" width="4" height="8"></rect>
-      <rect x="10" y="7" width="4" height="13"></rect>
-      <rect x="17" y="3" width="4" height="17"></rect>
-    </svg>
-  )
-}
-
 function ExpiryIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -65,14 +55,14 @@ function LogoMark() {
         width: 30,
         height: 30,
         borderRadius: 8,
-        background: 'linear-gradient(135deg, #7C5CFC, #B7A6FF)',
+        background: 'linear-gradient(135deg, var(--sidebar-active), #b08968)',
         flexShrink: 0,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
       }}
     >
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0D0F12" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="6" width="16" height="12" rx="2"></rect>
         <path d="M4 10h16"></path>
       </svg>
@@ -99,7 +89,7 @@ function DisabledNavItem({ icon, dotColor, label, collapsed }) {
           padding: collapsed ? '10px 0' : '10px 12px',
           justifyContent: collapsed ? 'center' : 'flex-start',
           borderRadius: 8,
-          color: '#5A5D68',
+          color: 'var(--text-faint)',
           cursor: 'not-allowed',
           userSelect: 'none',
         }}
@@ -120,15 +110,15 @@ function DisabledNavItem({ icon, dotColor, label, collapsed }) {
             left: collapsed ? '100%' : 12,
             top: collapsed ? '50%' : '100%',
             transform: collapsed ? 'translateY(-50%) translateX(8px)' : 'translateY(4px)',
-            background: '#1B1D23',
-            border: '1px solid #2A2D35',
+            background: 'var(--text-primary)',
+            border: 'none',
             borderRadius: 6,
             padding: '5px 9px',
             fontSize: 11.5,
-            color: '#ECEBF2',
+            color: 'var(--bg-card)',
             whiteSpace: 'nowrap',
             zIndex: 20,
-            boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
             pointerEvents: 'none',
           }}
         >
@@ -144,6 +134,7 @@ function NavItem({ to, icon, dotColor, label, collapsed, active }) {
   return (
     <Link
       to={to}
+      className="eh-nav-item"
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -151,15 +142,12 @@ function NavItem({ to, icon, dotColor, label, collapsed, active }) {
         padding: collapsed ? '10px 0' : '10px 12px',
         justifyContent: collapsed ? 'center' : 'flex-start',
         borderRadius: 8,
-        background: active ? 'rgba(124,92,252,0.14)' : 'transparent',
-        color: active ? '#ECEBF2' : '#9497A3',
+        background: active ? 'var(--sidebar-active)' : undefined,
+        color: active ? 'var(--sidebar-icon-active)' : 'var(--sidebar-icon)',
         textDecoration: 'none',
         position: 'relative',
       }}
     >
-      {active && (
-        <div style={{ position: 'absolute', left: 0, top: 8, bottom: 8, width: 3, borderRadius: 2, background: '#7C5CFC' }} />
-      )}
       {dotColor ? (
         <span style={{ width: 8, height: 8, borderRadius: 2, background: dotColor, flexShrink: 0 }} />
       ) : (
@@ -173,7 +161,7 @@ function NavItem({ to, icon, dotColor, label, collapsed, active }) {
 function SectionLabel({ children, collapsed }) {
   if (collapsed) return <div style={{ height: 14 }} />
   return (
-    <div style={{ padding: '14px 12px 4px 12px', fontSize: 10.5, color: '#5A5D68', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
+    <div style={{ padding: '14px 12px 4px 12px', fontSize: 10.5, color: 'var(--text-faint)', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
       {children}
     </div>
   )
@@ -200,8 +188,8 @@ export default function Sidebar() {
         width,
         height: '100%',
         flexShrink: 0,
-        background: '#131519',
-        borderRight: '1px solid #22242B',
+        background: 'var(--sidebar-bg)',
+        borderRight: '1px solid var(--border-light)',
         display: 'flex',
         flexDirection: 'column',
         padding: '20px 0',
@@ -216,12 +204,12 @@ export default function Sidebar() {
           gap: 10,
           padding: collapsed ? '0 0 24px 0' : '0 20px 24px 20px',
           justifyContent: collapsed ? 'center' : 'flex-start',
-          borderBottom: '1px solid #22242B',
+          borderBottom: '1px solid var(--border-light)',
           marginBottom: 8,
         }}
       >
         <LogoMark />
-        {!collapsed && <div className="disp" style={{ fontSize: 17, fontWeight: 600 }}>E-Voucher</div>}
+        {!collapsed && <div className="disp" style={{ fontSize: 17, fontWeight: 600, color: 'var(--text-primary)' }}>E-Voucher</div>}
       </div>
 
       <button
@@ -236,7 +224,7 @@ export default function Sidebar() {
           padding: collapsed ? '6px 0 14px 0' : '0 20px 14px 20px',
           background: 'transparent',
           border: 'none',
-          color: '#6B6E7A',
+          color: 'var(--text-muted)',
         }}
       >
         <ChevronIcon collapsed={collapsed} />
@@ -246,7 +234,7 @@ export default function Sidebar() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 2, padding: collapsed ? '0 12px' : '0 12px' }}>
         <NavItem
           to="/"
-          icon={<OverviewIcon />}
+          dotColor="var(--kpi-overall)"
           label="Overview"
           collapsed={collapsed}
           active={location.pathname === '/'}
@@ -255,21 +243,21 @@ export default function Sidebar() {
         <SectionLabel collapsed={collapsed}>By payment behaviour</SectionLabel>
         <NavItem
           to="/corporate-sales"
-          dotColor="#5CC8FC"
+          dotColor="var(--kpi-corporate-sales)"
           label="Corporate Sales"
           collapsed={collapsed}
           active={location.pathname === '/corporate-sales'}
         />
         <NavItem
           to="/kotak"
-          dotColor="#F2B84B"
+          dotColor="var(--kpi-kotak)"
           label="Kotak"
           collapsed={collapsed}
           active={location.pathname === '/kotak'}
         />
         <NavItem
           to="/offers"
-          dotColor="#7C5CFC"
+          dotColor="var(--kpi-offers)"
           label="Offers (On Redemption)"
           collapsed={collapsed}
           active={location.pathname === '/offers'}
@@ -284,7 +272,7 @@ export default function Sidebar() {
         style={{
           marginTop: 'auto',
           padding: collapsed ? '12px 0 0 0' : '12px 20px 0 20px',
-          borderTop: '1px solid #22242B',
+          borderTop: '1px solid var(--border-light)',
           display: 'flex',
           flexDirection: 'column',
           gap: 12,
@@ -297,11 +285,11 @@ export default function Sidebar() {
             alignItems: 'center',
             justifyContent: collapsed ? 'center' : 'flex-start',
             gap: 8,
-            color: '#6B6E7A',
+            color: 'var(--text-muted)',
             fontSize: 11.5,
           }}
         >
-          <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#34D399', flexShrink: 0 }} />
+          <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--success)', flexShrink: 0 }} />
           {!collapsed && 'Data synced'}
         </div>
       </div>

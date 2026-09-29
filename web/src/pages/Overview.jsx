@@ -33,8 +33,19 @@ function redemptionRatio(schemesForBucket) {
 
 export default function Overview() {
   const navigate = useNavigate()
-  const { schemes, loading, error } = useDashboardData()
+  const { schemes, monthly, loading, error } = useDashboardData()
   const [paymentGroup, setPaymentGroup] = useState('ALL')
+
+  // Full FY24-27 monthly trend per bucket, independent of the FY/Month
+  // filter above - the sparklines always show the whole history.
+  const sparklines = useMemo(
+    () => ({
+      neft: monthly.map((m) => m.neft),
+      kotak: monthly.map((m) => m.kotak),
+      offers: monthly.map((m) => m.offers),
+    }),
+    [monthly],
+  )
 
   const { fySelected, setFySelected, monthSelected, setMonthSelected, fyOptions, monthOptions, matches } =
     useFyMonthFilter(schemes)
@@ -86,7 +97,7 @@ export default function Overview() {
   if (loading) {
     return (
       <main style={mainStyle}>
-        <div style={{ color: '#8C8F9C', fontSize: 13.5 }}>Loading dashboard data...</div>
+        <div style={{ color: 'var(--text-secondary)', fontSize: 13.5 }}>Loading dashboard data...</div>
       </main>
     )
   }
@@ -94,7 +105,7 @@ export default function Overview() {
   if (error) {
     return (
       <main style={mainStyle}>
-        <div style={{ color: '#F2B84B', fontSize: 13.5 }}>
+        <div style={{ color: 'var(--warning)', fontSize: 13.5 }}>
           Couldn't load dashboard data. Run <code>npm run sync-data</code> after the pipeline has produced /data, then reload.
         </div>
       </main>
@@ -105,8 +116,8 @@ export default function Overview() {
     <main style={mainStyle}>
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
         <div>
-          <h1 className="disp" style={{ margin: 0, fontSize: 24, fontWeight: 600, lineHeight: 1.1 }}>Overview</h1>
-          <div style={{ fontSize: 12.5, color: '#8C8F9C', marginTop: 1 }}>E-Voucher Tracker</div>
+          <h1 className="disp" style={{ margin: 0, fontSize: 32, fontWeight: 700, lineHeight: 1.15, color: 'var(--text-primary)' }}>Overview</h1>
+          <div style={{ fontSize: 12.5, color: 'var(--text-secondary)', marginTop: 1 }}>E-Voucher Tracker</div>
         </div>
       </div>
 
@@ -123,27 +134,30 @@ export default function Overview() {
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
         <KpiCard
-          dotColor="#5CC8FC"
-          borderColor="#22344A"
+          dotColor="var(--kpi-corporate-sales)"
+          borderColor="var(--border-light)"
           label="Corp. Sales Revenue"
           value={formatCurrency(kpis.neft)}
           description="Upfront-recognized"
+          sparkline={sparklines.neft}
           onClick={() => navigate('/corporate-sales')}
         />
         <KpiCard
-          dotColor="#F2B84B"
-          borderColor="#3A331F"
+          dotColor="var(--kpi-kotak)"
+          borderColor="var(--border-light)"
           label="Kotak Revenue"
           value={formatCurrency(kpis.kotak)}
           description="All Kotak schemes · any payment mode"
+          sparkline={sparklines.kotak}
           onClick={() => navigate('/kotak')}
         />
         <KpiCard
-          dotColor="#7C5CFC"
-          borderColor="#2A2440"
+          dotColor="var(--kpi-offers)"
+          borderColor="var(--border-light)"
           label="Offers Revenue"
           value={formatCurrency(kpis.offers)}
           description="On Redemption"
+          sparkline={sparklines.offers}
           onClick={() => navigate('/offers')}
         />
       </div>
@@ -159,10 +173,16 @@ export default function Overview() {
 
 const mainStyle = {
   flexGrow: 1,
-  padding: '12px 32px 16px',
+  padding: '14px 32px 16px',
   display: 'flex',
   flexDirection: 'column',
-  gap: 10,
+  gap: 12,
+  // `gap` is a floor, not the final spacing - space-between hands any
+  // leftover vertical room to the gaps themselves, so the page always
+  // tucks fully to the bottom instead of dumping unused space as a dead
+  // zone under the last row. On a viewport tall enough that no room is
+  // left over, this collapses back to the plain `gap` value.
+  justifyContent: 'space-between',
   minWidth: 0,
   height: '100%',
   // Zero-scroll is the goal on a normal full-HD+ screen, but this is a

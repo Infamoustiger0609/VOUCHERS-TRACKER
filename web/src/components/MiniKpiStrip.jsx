@@ -1,16 +1,16 @@
 function MiniKpi({ label, value, accent }) {
   return (
     <div
+      className="eh-card"
       style={{
-        background: '#15171C',
-        border: `1px solid ${accent ? '#2A2440' : '#22242B'}`,
+        border: `1px solid ${accent ? 'var(--border-medium)' : 'var(--border-light)'}`,
         borderRadius: 10,
         padding: '10px 16px',
         minWidth: 130,
       }}
     >
-      <div style={{ fontSize: 10.5, color: '#8C8F9C', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>{label}</div>
-      <div className="num" style={{ fontSize: 18, fontWeight: 600, marginTop: 2, whiteSpace: 'nowrap' }}>{value}</div>
+      <div style={{ fontSize: 10.5, color: 'var(--text-secondary)', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>{label}</div>
+      <div className="num" style={{ fontSize: 18, fontWeight: 600, marginTop: 2, whiteSpace: 'nowrap', color: 'var(--text-primary)' }}>{value}</div>
     </div>
   )
 }

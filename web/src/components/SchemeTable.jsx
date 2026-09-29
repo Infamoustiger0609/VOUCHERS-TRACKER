@@ -8,20 +8,20 @@ import { formatCurrency, formatQty, formatPercent } from '../lib/format'
 const TH_STYLE = {
   padding: '11px 14px',
   fontSize: 11,
-  color: '#6B6E7A',
+  color: 'var(--text-muted)',
   textTransform: 'uppercase',
   letterSpacing: '0.4px',
   whiteSpace: 'nowrap',
   position: 'sticky',
   top: 0,
-  background: '#15171C',
+  background: 'var(--bg-card)',
   zIndex: 1,
 }
 
 function ViewChevron() {
   return (
     <td style={{ padding: '12px 14px', textAlign: 'center' }}>
-      <span style={{ color: '#5A5D68', display: 'flex', justifyContent: 'center' }}>
+      <span style={{ color: 'var(--text-faint)', display: 'flex', justifyContent: 'center' }}>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M9 6l6 6-6 6" />
         </svg>
@@ -32,9 +32,9 @@ function ViewChevron() {
 
 function StatField({ label, value }) {
   return (
-    <div style={{ background: '#131519', border: '1px solid #22242B', borderRadius: 10, padding: '12px 14px', minWidth: 0 }}>
-      <div style={{ fontSize: 10.5, color: '#8C8F9C', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>{label}</div>
-      <div className="num" style={{ fontSize: 15, marginTop: 5, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+    <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-light)', borderRadius: 10, padding: '12px 14px', minWidth: 0 }}>
+      <div style={{ fontSize: 10.5, color: 'var(--text-secondary)', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>{label}</div>
+      <div className="num" style={{ fontSize: 15, marginTop: 5, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: 'var(--text-primary)' }}>
         {value}
       </div>
     </div>
@@ -106,7 +106,7 @@ function SchemeRow({ scheme, amountField, onOpen, indent = false }) {
 
   return (
     <tr
-      style={{ borderBottom: '1px solid #1B1D23', cursor: 'pointer' }}
+      style={{ borderBottom: '1px solid var(--border-light)', cursor: 'pointer' }}
       onClick={() => onOpen(scheme)}
     >
       <td
@@ -114,30 +114,30 @@ function SchemeRow({ scheme, amountField, onOpen, indent = false }) {
         style={{
           padding: '12px 14px',
           fontSize: 12.5,
-          color: '#D6D5DE',
+          color: 'var(--text-primary)',
           textAlign: 'center',
           paddingLeft: indent ? 34 : 14,
         }}
       >
         {scheme.scheme_code}
       </td>
-      <td style={{ padding: '12px 14px', fontSize: 12.5, maxWidth: 240, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textAlign: 'center' }}>
+      <td style={{ padding: '12px 14px', fontSize: 12.5, maxWidth: 240, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textAlign: 'center', color: 'var(--text-primary)' }}>
         {scheme.vendor}
       </td>
       <td style={{ padding: '12px 14px', textAlign: 'center' }}>
         <Badge label={scheme.category} bg={cat.bg} color={cat.color} />
       </td>
-      <td className="num" style={{ padding: '12px 14px', fontSize: 12.5, textAlign: 'right', color: '#9497A3' }}>
+      <td className="num" style={{ padding: '12px 14px', fontSize: 12.5, textAlign: 'right', color: 'var(--text-secondary)' }}>
         {formatQty(scheme.created_qty)}
       </td>
-      <td className="num" style={{ padding: '12px 14px', fontSize: 12.5, textAlign: 'right', color: '#9497A3' }}>
+      <td className="num" style={{ padding: '12px 14px', fontSize: 12.5, textAlign: 'right', color: 'var(--text-secondary)' }}>
         {formatQty(scheme.redeemed_qty)}
       </td>
-      <td className="num" style={{ padding: '12px 14px', fontSize: 12.5, textAlign: 'right', fontWeight: 600 }}>
+      <td className="num" style={{ padding: '12px 14px', fontSize: 12.5, textAlign: 'right', fontWeight: 600, color: 'var(--text-primary)' }}>
         {formatCurrency(scheme[amountField])}
       </td>
       <td style={{ padding: '12px 14px', textAlign: 'right' }}>
-        <span className="num" style={{ fontSize: 12.5 }}>{formatPercent(scheme.pct_redeemed)}</span>
+        <span className="num" style={{ fontSize: 12.5, color: 'var(--text-primary)' }}>{formatPercent(scheme.pct_redeemed)}</span>
       </td>
       <ViewChevron />
     </tr>
@@ -154,12 +154,12 @@ function VendorRow({ vendor, amountField, onOpenScheme, onOpenVendor, sortField,
 
   return (
     <>
-      <tr style={{ borderBottom: '1px solid #1B1D23', background: 'rgba(124,92,252,0.04)' }}>
-        <td className="num" style={{ padding: '12px 14px', fontSize: 11.5, color: '#6B6E7A', textAlign: 'center' }}>
+      <tr style={{ borderBottom: '1px solid var(--border-light)', background: 'var(--accent-soft)' }}>
+        <td className="num" style={{ padding: '12px 14px', fontSize: 11.5, color: 'var(--text-muted)', textAlign: 'center' }}>
           <button
             type="button"
             onClick={() => setExpanded((e) => !e)}
-            style={{ background: 'transparent', border: 'none', color: '#6B6E7A', display: 'inline-flex', alignItems: 'center', gap: 6, padding: 0 }}
+            style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: 6, padding: 0 }}
           >
             <svg
               width="12"
@@ -178,30 +178,30 @@ function VendorRow({ vendor, amountField, onOpenScheme, onOpenVendor, sortField,
           </button>
         </td>
         <td
-          style={{ padding: '12px 14px', fontSize: 12.5, fontWeight: 500, cursor: 'pointer', textAlign: 'center' }}
+          style={{ padding: '12px 14px', fontSize: 12.5, fontWeight: 500, cursor: 'pointer', textAlign: 'center', color: 'var(--text-primary)' }}
           onClick={() => onOpenVendor(vendor)}
         >
           {vendor.vendor}
         </td>
-        <td style={{ padding: '12px 14px', color: '#5A5D68', fontSize: 12, textAlign: 'center' }}>—</td>
-        <td className="num" style={{ padding: '12px 14px', fontSize: 12.5, textAlign: 'right', color: '#9497A3' }}>
+        <td style={{ padding: '12px 14px', color: 'var(--text-faint)', fontSize: 12, textAlign: 'center' }}>—</td>
+        <td className="num" style={{ padding: '12px 14px', fontSize: 12.5, textAlign: 'right', color: 'var(--text-secondary)' }}>
           {formatQty(vendor.created)}
         </td>
-        <td className="num" style={{ padding: '12px 14px', fontSize: 12.5, textAlign: 'right', color: '#9497A3' }}>
+        <td className="num" style={{ padding: '12px 14px', fontSize: 12.5, textAlign: 'right', color: 'var(--text-secondary)' }}>
           {formatQty(vendor.redeemed)}
         </td>
-        <td className="num" style={{ padding: '12px 14px', fontSize: 12.5, textAlign: 'right', fontWeight: 600 }}>
+        <td className="num" style={{ padding: '12px 14px', fontSize: 12.5, textAlign: 'right', fontWeight: 600, color: 'var(--text-primary)' }}>
           {formatCurrency(vendor.amount)}
         </td>
         <td style={{ padding: '12px 14px', textAlign: 'right' }}>
-          <span className="num" style={{ fontSize: 12.5 }}>{formatPercent(pct)}</span>
+          <span className="num" style={{ fontSize: 12.5, color: 'var(--text-primary)' }}>{formatPercent(pct)}</span>
         </td>
         <td style={{ padding: '12px 14px', textAlign: 'center' }}>
           <button
             type="button"
             onClick={() => onOpenVendor(vendor)}
             aria-label="View vendor summary"
-            style={{ background: 'transparent', border: 'none', color: '#5A5D68', display: 'flex', margin: '0 auto' }}
+            style={{ background: 'transparent', border: 'none', color: 'var(--text-faint)', display: 'flex', margin: '0 auto' }}
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M9 6l6 6-6 6" />
@@ -280,16 +280,16 @@ export default function SchemeTable({ schemes, amountField, amountColumnLabel })
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10, flexGrow: 1, minHeight: 0 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <div style={{ display: 'flex', background: '#1B1D23', border: '1px solid #2A2D35', borderRadius: 8, overflow: 'hidden' }}>
+        <div style={{ display: 'flex', background: 'var(--bg-card)', border: '1px solid var(--border-medium)', borderRadius: 8, overflow: 'hidden' }}>
           <button
             type="button"
             onClick={() => setMode('CODE')}
             style={{
               padding: '8px 16px',
               fontSize: 12.5,
-              background: mode === 'CODE' ? 'rgba(124,92,252,0.16)' : 'transparent',
+              background: mode === 'CODE' ? 'var(--accent-soft)' : 'transparent',
               border: 'none',
-              color: mode === 'CODE' ? '#B7A6FF' : '#9497A3',
+              color: mode === 'CODE' ? 'var(--accent)' : 'var(--text-secondary)',
             }}
           >
             By Scheme Code
@@ -300,10 +300,10 @@ export default function SchemeTable({ schemes, amountField, amountColumnLabel })
             style={{
               padding: '8px 16px',
               fontSize: 12.5,
-              background: mode === 'VENDOR' ? 'rgba(124,92,252,0.16)' : 'transparent',
+              background: mode === 'VENDOR' ? 'var(--accent-soft)' : 'transparent',
               border: 'none',
-              borderLeft: '1px solid #2A2D35',
-              color: mode === 'VENDOR' ? '#B7A6FF' : '#9497A3',
+              borderLeft: '1px solid var(--border-medium)',
+              color: mode === 'VENDOR' ? 'var(--accent)' : 'var(--text-secondary)',
             }}
           >
             By Vendor
@@ -321,10 +321,20 @@ export default function SchemeTable({ schemes, amountField, amountColumnLabel })
         />
       </div>
 
-      <div style={{ background: '#15171C', border: '1px solid #22242B', borderRadius: 14, overflow: 'auto', flexGrow: 1, minHeight: 0 }}>
+      <div
+        style={{
+          background: 'var(--bg-card)',
+          border: '1px solid var(--border-light)',
+          boxShadow: 'var(--card-shadow)',
+          borderRadius: 14,
+          overflow: 'auto',
+          flexGrow: 1,
+          minHeight: 0,
+        }}
+      >
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
-            <tr style={{ borderBottom: '1px solid #22242B' }}>
+            <tr style={{ borderBottom: '1px solid var(--border-light)' }}>
               <th style={{ ...TH_STYLE, textAlign: 'center' }}>{mode === 'CODE' ? 'Scheme Code' : 'Schemes'}</th>
               <th style={{ ...TH_STYLE, textAlign: 'center' }}>Vendor</th>
               <th style={{ ...TH_STYLE, textAlign: 'center' }}>Category</th>
@@ -356,7 +366,7 @@ export default function SchemeTable({ schemes, amountField, amountColumnLabel })
                 ))}
             {schemes.length === 0 && (
               <tr>
-                <td colSpan={8} style={{ padding: '32px 14px', textAlign: 'center', color: '#6B6E7A', fontSize: 13 }}>
+                <td colSpan={8} style={{ padding: '32px 14px', textAlign: 'center', color: 'var(--text-muted)', fontSize: 13 }}>
                   No schemes match the current filters.
                 </td>
               </tr>

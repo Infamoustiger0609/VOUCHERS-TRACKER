@@ -54,7 +54,7 @@ export default function BucketDetailPage({ bucket, breadcrumbLabel, pageTitle })
   if (loading) {
     return (
       <main style={mainStyle}>
-        <div style={{ color: '#8C8F9C', fontSize: 13.5 }}>Loading dashboard data...</div>
+        <div style={{ color: 'var(--text-secondary)', fontSize: 13.5 }}>Loading dashboard data...</div>
       </main>
     )
   }
@@ -62,7 +62,7 @@ export default function BucketDetailPage({ bucket, breadcrumbLabel, pageTitle })
   if (error) {
     return (
       <main style={mainStyle}>
-        <div style={{ color: '#F2B84B', fontSize: 13.5 }}>
+        <div style={{ color: 'var(--warning)', fontSize: 13.5 }}>
           Couldn't load dashboard data. Run <code>npm run sync-data</code> after the pipeline has produced /data, then reload.
         </div>
       </main>
@@ -73,12 +73,12 @@ export default function BucketDetailPage({ bucket, breadcrumbLabel, pageTitle })
     <main style={mainStyle}>
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: '#6B6E7A' }}>
-            <Link to="/" style={{ color: '#6B6E7A', textDecoration: 'none' }}>Overview</Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: 'var(--text-muted)' }}>
+            <Link to="/" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Overview</Link>
             <span>/</span>
-            <span style={{ color: '#9497A3' }}>{breadcrumbLabel}</span>
+            <span style={{ color: 'var(--text-secondary)' }}>{breadcrumbLabel}</span>
           </div>
-          <h1 className="disp" style={{ margin: '4px 0 0 0', fontSize: 26, fontWeight: 600, lineHeight: 1.15 }}>
+          <h1 className="disp" style={{ margin: '4px 0 0 0', fontSize: 42, fontWeight: 700, lineHeight: 1.1, color: 'var(--text-primary)' }}>
             {pageTitle}
           </h1>
         </div>

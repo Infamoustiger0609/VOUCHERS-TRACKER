@@ -8,17 +8,15 @@ export default function RedemptionCard({ label, dotColor, redeemedLabel, created
 
   return (
     <div
+      className="eh-card"
       style={{
-        background: '#15171C',
-        border: '1px solid #22242B',
-        borderRadius: 18,
-        padding: '14px 16px',
-        height: 92,
+        padding: '13px 16px',
+        height: 88,
         boxSizing: 'border-box',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        gap: 6,
+        gap: 5,
         minWidth: 0,
       }}
     >
@@ -27,7 +25,7 @@ export default function RedemptionCard({ label, dotColor, redeemedLabel, created
         <span
           style={{
             fontSize: hasRevenue ? 13.5 : 12.5,
-            color: '#8C8F9C',
+            color: 'var(--text-secondary)',
             textTransform: 'uppercase',
             letterSpacing: '0.5px',
             whiteSpace: 'nowrap',
@@ -41,41 +39,41 @@ export default function RedemptionCard({ label, dotColor, redeemedLabel, created
 
       {!hasRevenue ? (
         <>
-          <div style={{ fontSize: 10.5, color: '#6B6E7A', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+          <div style={{ fontSize: 10.5, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
             Redeemed / Created
           </div>
           <div
             className="num"
-            style={{ fontSize: 13, fontWeight: 600, lineHeight: 1.2, whiteSpace: 'nowrap', overflow: 'hidden' }}
+            style={{ fontSize: 13, fontWeight: 600, lineHeight: 1.2, whiteSpace: 'nowrap', overflow: 'hidden', color: 'var(--text-primary)' }}
           >
             <span>{redeemedLabel}</span>
-            <span style={{ color: '#5A5D68', fontWeight: 400 }}>{' / '}{createdLabel}</span>
-            <span style={{ color: '#6B6E7A', fontWeight: 400 }}>{' · '}{pctLabel}</span>
+            <span style={{ color: 'var(--text-faint)', fontWeight: 400 }}>{' / '}{createdLabel}</span>
+            <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>{' · '}{pctLabel}</span>
           </div>
         </>
       ) : (
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 22, minWidth: 0 }}>
           <div style={{ minWidth: 0, flexShrink: 1 }}>
-            <div style={{ fontSize: 9.5, color: '#6B6E7A', textTransform: 'uppercase', letterSpacing: '0.3px', whiteSpace: 'nowrap' }}>
+            <div style={{ fontSize: 9.5, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.3px', whiteSpace: 'nowrap' }}>
               Redeemed / Created
             </div>
             <div
               className="num"
-              style={{ fontSize: 11.5, fontWeight: 600, lineHeight: 1.3, whiteSpace: 'nowrap', overflow: 'hidden' }}
+              style={{ fontSize: 11.5, fontWeight: 600, lineHeight: 1.3, whiteSpace: 'nowrap', overflow: 'hidden', color: 'var(--text-primary)' }}
             >
               <span>{redeemedLabel}</span>
-              <span style={{ color: '#5A5D68', fontWeight: 400 }}>{' / '}{createdLabel}</span>
-              <span style={{ color: '#6B6E7A', fontWeight: 400 }}>{' · '}{pctLabel}</span>
+              <span style={{ color: 'var(--text-faint)', fontWeight: 400 }}>{' / '}{createdLabel}</span>
+              <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>{' · '}{pctLabel}</span>
             </div>
           </div>
 
           <div style={{ minWidth: 0, flexShrink: 0 }}>
-            <div style={{ fontSize: 9.5, color: '#6B6E7A', textTransform: 'uppercase', letterSpacing: '0.3px', whiteSpace: 'nowrap' }}>
+            <div style={{ fontSize: 9.5, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.3px', whiteSpace: 'nowrap' }}>
               Revenue
             </div>
             <div
               className="num"
-              style={{ fontSize: 11.5, fontWeight: 600, lineHeight: 1.3, whiteSpace: 'nowrap', overflow: 'hidden' }}
+              style={{ fontSize: 11.5, fontWeight: 600, lineHeight: 1.3, whiteSpace: 'nowrap', overflow: 'hidden', color: 'var(--text-primary)' }}
             >
               {revenueLabel}
             </div>

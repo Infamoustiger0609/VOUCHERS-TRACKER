@@ -3,19 +3,19 @@ export default function TotalCard({ value }) {
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <div
         style={{
-          background: '#15171C',
-          border: '1px solid #2E3038',
+          background: 'var(--total-card-bg)',
+          border: '1px solid var(--total-card-border)',
           borderRadius: 18,
-          padding: '14px 36px',
+          padding: '12px 34px',
           display: 'flex',
           alignItems: 'center',
           gap: 18,
         }}
       >
-        <span style={{ fontSize: 13.5, color: '#8C8F9C', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
+        <span style={{ fontSize: 13, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
           Total Revenue
         </span>
-        <span className="num" style={{ fontSize: 32, fontWeight: 600, lineHeight: 1.1 }}>{value}</span>
+        <span className="num" style={{ fontSize: 28, fontWeight: 700, lineHeight: 1.1, color: 'var(--text-primary)' }}>{value}</span>
       </div>
     </div>
   )

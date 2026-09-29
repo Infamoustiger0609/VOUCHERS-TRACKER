@@ -24,13 +24,13 @@ export default function FilterBar({
         alignItems: 'center',
         gap: 10,
         padding: '8px 14px',
-        background: '#131519',
-        border: '1px solid #22242B',
-        borderRadius: 10,
+        background: 'var(--filter-bg)',
+        border: '1px solid var(--border-light)',
+        borderRadius: 16,
         flexWrap: 'wrap',
       }}
     >
-      <span style={{ fontSize: 11, color: '#6B6E7A', textTransform: 'uppercase', letterSpacing: '0.5px', marginRight: 4 }}>
+      <span style={{ fontSize: 11, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginRight: 4 }}>
         Filters
       </span>
 
@@ -39,10 +39,10 @@ export default function FilterBar({
 
       {showPaymentMode && (
         <>
-          <div style={{ width: 1, height: 20, background: '#2A2D35', margin: '0 4px' }} />
+          <div style={{ width: 1, height: 20, background: 'var(--border-medium)', margin: '0 4px' }} />
 
-          <span style={{ fontSize: 11.5, color: '#6B6E7A' }}>Payment Mode:</span>
-          <div style={{ display: 'flex', background: '#1B1D23', border: '1px solid #2A2D35', borderRadius: 8, overflow: 'hidden' }}>
+          <span style={{ fontSize: 11.5, color: 'var(--text-muted)' }}>Payment Mode:</span>
+          <div style={{ display: 'flex', background: 'var(--bg-card)', border: '1px solid var(--border-medium)', borderRadius: 8, overflow: 'hidden' }}>
             {SEGMENTS.map((seg, i) => {
               const active = paymentGroup === seg.key
               return (
@@ -53,10 +53,10 @@ export default function FilterBar({
                   style={{
                     padding: '7px 13px',
                     fontSize: 12.5,
-                    background: active ? 'rgba(92,200,252,0.16)' : 'transparent',
+                    background: active ? 'var(--filter-active-bg)' : 'transparent',
                     border: 'none',
-                    borderLeft: i > 0 ? '1px solid #2A2D35' : 'none',
-                    color: active ? '#7FD4FF' : '#9497A3',
+                    borderLeft: i > 0 ? '1px solid var(--border-medium)' : 'none',
+                    color: active ? 'var(--filter-active-text)' : 'var(--text-secondary)',
                   }}
                 >
                   {seg.label}
@@ -72,9 +72,9 @@ export default function FilterBar({
               width: 20,
               height: 20,
               borderRadius: '50%',
-              background: '#1B1D23',
-              border: '1px solid #2A2D35',
-              color: '#6B6E7A',
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border-medium)',
+              color: 'var(--text-muted)',
               fontSize: 11,
               display: 'flex',
               alignItems: 'center',

@@ -11,10 +11,10 @@ export default function Placeholder({ title }) {
         gap: 8,
         height: '100%',
         overflowY: 'auto',
-        color: '#6B6E7A',
+        color: 'var(--text-muted)',
       }}
     >
-      <div className="disp" style={{ fontSize: 20, color: '#8C8F9C' }}>{title}</div>
+      <div className="disp" style={{ fontSize: 20, fontWeight: 700, color: 'var(--text-secondary)' }}>{title}</div>
       <div style={{ fontSize: 13 }}>Coming in a later phase.</div>
     </main>
   )

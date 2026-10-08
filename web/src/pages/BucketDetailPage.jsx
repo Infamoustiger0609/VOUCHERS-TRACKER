@@ -21,8 +21,10 @@ export default function BucketDetailPage({ bucket, breadcrumbLabel, pageTitle })
   const { schemes, loading, error } = useDashboardData()
   const bucketSchemes = useMemo(() => schemes.filter((s) => s.bucket === bucket), [schemes, bucket])
 
+  // Options come from the full scheme list (not just this bucket) so the
+  // shared FY/Month selection means the same thing on every page.
   const { fySelected, setFySelected, monthSelected, setMonthSelected, fyOptions, monthOptions, matches } =
-    useFyMonthFilter(bucketSchemes)
+    useFyMonthFilter(schemes)
 
   const filteredSchemes = useMemo(() => bucketSchemes.filter(matches), [bucketSchemes, matches])
 

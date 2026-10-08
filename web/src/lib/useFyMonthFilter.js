@@ -1,35 +1,26 @@
 import { useCallback, useEffect, useMemo } from 'react'
-import { fyLabelFromDateString, monthNameFromDateString, MONTH_NAMES } from './fiscalYear'
+import {
+  fyLabelFromDateString,
+  fyLabelFromMonthKey,
+  monthKeyFromDateString,
+  monthNameFromMonthKey,
+  shortMonthLabelFromMonthKey,
+} from './fiscalYear'
 import { useSharedFySelection } from './FilterContext'
-
-function monthKeyFromDateString(str) {
-  // "2024-06-10" -> "2024-06"
-  if (!str) return null
-  const d = new Date(str)
-  if (Number.isNaN(d.getTime())) return null
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
-}
-
-function fyLabelFromMonthKey(key) {
-  const [y, m] = key.split('-').map(Number)
-  return fyLabelFromDateString(new Date(y, m - 1, 1).toISOString())
-}
-
-function monthNameFromMonthKey(key) {
-  const [, m] = key.split('-').map(Number)
-  return MONTH_NAMES[m - 1]
-}
+import { isNone, pruneSelection, selectionMatches } from './multiSelect'
 
 /**
  * Shared FY/Month multi-select filter logic - used by Overview and every
- * bucket detail page so "dynamic month options per selected FY" and
- * "reference date = latest real month in scope" behave identically
- * everywhere.
+ * bucket detail page so option lists, matching and pruning behave
+ * identically everywhere.
+ *
+ * Pass the FULL scheme list (not a page's bucket slice): the selection is
+ * shared across pages, so "All", "all but one" and "every option ticked"
+ * must mean the same set of FYs/months on every page.
+ *
+ * Month values are "YYYY-MM" keys, so June 2024 and June 2025 are distinct.
  */
 export function useFyMonthFilter(schemes) {
-  // Shared across Overview + every bucket detail page (see FilterContext) -
-  // only the derived options/matcher below are page-local, computed from
-  // this page's own `schemes` slice.
   const { fySelected, setFySelected, monthSelected, setMonthSelected } = useSharedFySelection()
 
   const fyOptions = useMemo(() => {
@@ -41,8 +32,8 @@ export function useFyMonthFilter(schemes) {
     return Array.from(labels).sort().reverse().map((l) => ({ value: l, label: l }))
   }, [schemes])
 
-  // Every calendar month actually present in the data (from Validity From),
-  // sorted ascending.
+  // Every calendar month actually present in the data, chronological -
+  // which within one FY is exactly April -> March order.
   const allMonthKeys = useMemo(() => {
     const keys = new Set()
     for (const s of schemes) {
@@ -52,49 +43,45 @@ export function useFyMonthFilter(schemes) {
     return Array.from(keys).sort()
   }, [schemes])
 
-  // Month dropdown only offers months with real data in the currently
-  // selected FY(s).
+  // Only months with data in the selected FY(s). One FY in scope -> plain
+  // month names; several -> year-qualified ("Jun '24") so they're
+  // distinguishable.
   const monthOptions = useMemo(() => {
-    const names = new Set()
-    for (const key of allMonthKeys) {
-      if (fySelected.length > 0 && !fySelected.includes(fyLabelFromMonthKey(key))) continue
-      names.add(monthNameFromMonthKey(key))
-    }
-    return MONTH_NAMES.filter((m) => names.has(m)).map((m) => ({ value: m, label: m }))
+    const keys = allMonthKeys.filter((key) => selectionMatches(fySelected, fyLabelFromMonthKey(key)))
+    const singleFy = new Set(keys.map(fyLabelFromMonthKey)).size === 1
+    return keys.map((key) => ({
+      value: key,
+      label: singleFy ? monthNameFromMonthKey(key) : shortMonthLabelFromMonthKey(key),
+    }))
   }, [allMonthKeys, fySelected])
 
-  // If the FY selection changes and a previously-selected month is no
-  // longer offered, drop it rather than silently filtering everything out.
+  // When the FY selection changes, drop months that are no longer offered.
+  // Skipped until data has loaded - otherwise the empty first render on
+  // every page mount would wipe the shared month selection - and while FY
+  // is None, the transient state on the way from "All" to a few FYs, which
+  // offers no months but already matches zero rows.
   useEffect(() => {
-    setMonthSelected((prev) => {
-      if (prev.length === 0) return prev
-      const validValues = new Set(monthOptions.map((o) => o.value))
-      const next = prev.filter((m) => validValues.has(m))
-      return next.length === prev.length ? prev : next
-    })
-  }, [monthOptions])
+    if (schemes.length === 0 || isNone(fySelected)) return
+    const valid = monthOptions.map((o) => o.value)
+    setMonthSelected((prev) => pruneSelection(prev, valid))
+  }, [schemes, fySelected, monthOptions, setMonthSelected])
 
   const matches = useCallback(
-    (s) => {
-      if (fySelected.length > 0 && !fySelected.includes(fyLabelFromDateString(s.validity_from))) return false
-      if (monthSelected.length > 0 && !monthSelected.includes(monthNameFromDateString(s.validity_from))) return false
-      return true
-    },
+    (s) =>
+      selectionMatches(fySelected, fyLabelFromDateString(s.validity_from)) &&
+      selectionMatches(monthSelected, monthKeyFromDateString(s.validity_from)),
     [fySelected, monthSelected],
   )
 
   // The latest month-end actually covered by the current FY/Month
-  // selection - e.g. FY26-27 + Month "All" -> end of the latest month with
-  // real data in that FY. With no filter at all, use today's real date.
+  // selection - e.g. FY 2026-27 + Month "All" -> end of the latest month
+  // with real data in that FY. With no filter at all, use today's date.
   const referenceDate = useMemo(() => {
-    if (fySelected.length === 0 && monthSelected.length === 0) {
-      return new Date()
-    }
-    const resolved = allMonthKeys.filter((key) => {
-      const fyOk = fySelected.length === 0 || fySelected.includes(fyLabelFromMonthKey(key))
-      const monthOk = monthSelected.length === 0 || monthSelected.includes(monthNameFromMonthKey(key))
-      return fyOk && monthOk
-    })
+    if (fySelected.length === 0 && monthSelected.length === 0) return new Date()
+    if (isNone(fySelected) || isNone(monthSelected)) return new Date()
+    const resolved = allMonthKeys.filter(
+      (key) => selectionMatches(fySelected, fyLabelFromMonthKey(key)) && selectionMatches(monthSelected, key),
+    )
     if (resolved.length === 0) return new Date()
     const [y, m] = resolved[resolved.length - 1].split('-').map(Number)
     return new Date(y, m, 0, 23, 59, 59, 999) // last day of month m (1-based), end of day

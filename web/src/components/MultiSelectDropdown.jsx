@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { isAll, isChecked, selectionSummary, toggleAll, toggleOption } from '../lib/multiSelect'
 
 function ChevronDown() {
   return (
@@ -33,10 +34,9 @@ function Check({ checked }) {
 }
 
 /**
- * Multi-select dropdown with an "All" toggle-all row, matching the Payment
- * Mode segmented control's pattern of an explicit all-or-some choice.
- * `selected` = [] means "All" (unfiltered); a non-empty array means only
- * those values match (OR'd together).
+ * Multi-select dropdown with an "All" toggle-all row. Selection semantics
+ * ([] = All, explicit array, NONE_SELECTED = nothing) live in
+ * lib/multiSelect.js - this component only renders them.
  */
 export default function MultiSelectDropdown({ label, options, selected, onChange }) {
   const [open, setOpen] = useState(false)
@@ -50,24 +50,16 @@ export default function MultiSelectDropdown({ label, options, selected, onChange
     return () => document.removeEventListener('mousedown', onDocClick)
   }, [])
 
-  const allSelected = selected.length === 0
-  const summary = allSelected
-    ? 'All'
-    : selected.length === 1
-      ? selected[0]
-      : `${selected.length} selected`
+  const allValues = options.map((o) => o.value)
+  const allSelected = isAll(selected, allValues)
+  const summary = selectionSummary(selected, options)
 
-  function toggleAll() {
-    onChange([])
+  function onToggleAll() {
+    onChange(toggleAll(selected, allValues))
   }
 
-  function toggleOne(value) {
-    if (selected.includes(value)) {
-      onChange(selected.filter((v) => v !== value))
-    } else {
-      const next = [...selected, value]
-      onChange(next.length >= options.length ? [] : next)
-    }
+  function onToggleOne(value) {
+    onChange(toggleOption(selected, value, allValues))
   }
 
   return (
@@ -112,7 +104,7 @@ export default function MultiSelectDropdown({ label, options, selected, onChange
           <div
             role="option"
             aria-selected={allSelected}
-            onClick={toggleAll}
+            onClick={onToggleAll}
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -131,13 +123,13 @@ export default function MultiSelectDropdown({ label, options, selected, onChange
           <div style={{ height: 1, background: 'var(--border-light)', margin: '4px 4px' }} />
 
           {options.map((opt) => {
-            const checked = allSelected || selected.includes(opt.value)
+            const checked = isChecked(selected, opt.value)
             return (
               <div
                 key={opt.value}
                 role="option"
                 aria-selected={checked}
-                onClick={() => toggleOne(opt.value)}
+                onClick={() => onToggleOne(opt.value)}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
